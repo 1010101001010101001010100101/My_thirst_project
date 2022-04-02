@@ -4,7 +4,7 @@ from django.template import loader
 
 from  .models import Bb, Categories
 
-#MAIN-HOME 123
+#MAIN-HOME
 def index(request):
    bbs = Bb.objects.all()
    rubrics = Categories.objects.all()
