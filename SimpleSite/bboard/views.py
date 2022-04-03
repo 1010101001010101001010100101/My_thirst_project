@@ -4,14 +4,14 @@ from django.template import loader
 
 from  .models import Bb, Categories
 
-#MAIN-HOME
+#MAIN-HOME 
 def index(request):
    bbs = Bb.objects.all()
    rubrics = Categories.objects.all()
    context = {'bbs' : bbs, 'rubrics' : rubrics}
    return render(request, 'bboard/index.html', context)
 
-#CATEGORIES ----123
+#CATEGORIES 12345
 def by_rubric(request, rubric_id):
    bbs = Bb.objects.filter(rubric=rubric_id)
    rubrics = Categories.objects.all()
