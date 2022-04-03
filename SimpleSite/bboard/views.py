@@ -11,7 +11,7 @@ def index(request):
    context = {'bbs' : bbs, 'rubrics' : rubrics}
    return render(request, 'bboard/index.html', context)
 
-#CATEGORIES
+#CATEGORIES 123
 def by_rubric(request, rubric_id):
    bbs = Bb.objects.filter(rubric=rubric_id)
    rubrics = Categories.objects.all()
