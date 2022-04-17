@@ -1,3 +1,4 @@
+from turtle import title
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
@@ -18,6 +19,8 @@ def by_rubric(request, rubric_id):
    current_rubric = Categories.objects.get(pk=rubric_id)
    context = {'bbs' : bbs, 'rubrics' : rubrics, 'current_rubric' : current_rubric}
    return render(request, 'bboard/by_categories.html', context)
+
+
 
 
 
