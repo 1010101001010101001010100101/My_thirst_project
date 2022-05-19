@@ -20,3 +20,7 @@ def by_rubric(request, rubric_id):
    return render(request, 'bboard/by_categories.html', context)
 
 
+def add_bb(request):
+   pass
+
+

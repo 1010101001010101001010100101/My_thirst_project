@@ -1,25 +1,61 @@
+{% extends 'bboard/base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ current_rubric.name}} :: Обьявление</title>
+    {% block title %} {{ current_rubric.name }} {% endblock %}
 </head>
 <body>
     <h1>Обьявления : </h1>
     <h2>Категория : {{ current_rubric.name }}</h2>
     <div>
-        <a href='/bboard'>Главная</a>
-             {% for rubric in rubrics %}
-            <a href="/bboard/{{ rubric.pk }}"> {{ rubric.name }}</a>
-             {% endfor %}
-    </div>
-        {% for bb in bbs %}
-          <div>
-                <h2>{{ bb.title }}</h2>
-                <p>{{ bb.content }}</p>
-                <p>{{ bb.published|date:"d.m.Y H:i"}}</p>
-          </div>
-        {% endfor %}
+
+        {% block create_bb %}
+        <div class="container">
+            <div class="nav justify-content-end">
+                <div class="nav-item">
+                    <p><a class="nav-link" href="#">Create bb</a></p>
+                </div>
+                <div class="nav-item">
+                    <p><a class="nav-link" href="#">about</a></p>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block view_categories %}
+
+        <div class="container">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'index' %}">Главная</a>
+                </li>
+                {% for rubric in rubrics %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name|capfirst }}</a>
+                </li>
+                {% endfor %}
+
+        {% endblock %}
+
+        </div>
+
+        {% block view_bbs %}
+
+            {% for bb in bbs %}
+            <div class="container">
+            
+                    <div class="alert alert-light">
+                        <h2>{{ bb.title|capfirst }}</h2>
+                        <p class="text-break">{{ bb.content|capfirst}}</p>
+                        <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
+                    </div>
+              
+            </div>
+            {% endfor %}
+
+        {% endblock %}
 
 </body>
 </html>
