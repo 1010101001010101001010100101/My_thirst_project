@@ -5,6 +5,6 @@ urlpatterns = [
 
     path('<int:rubric_id>/', by_rubric, name='by_rubric'),
     path('', index, name='index'),
-    path('add/', add_bb, name='add')
+    path('add/', AddBb.as_view(), name='add')
 
 ]

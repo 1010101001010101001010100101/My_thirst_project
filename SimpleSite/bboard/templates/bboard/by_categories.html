@@ -11,35 +11,32 @@
     <h2>Категория : {{ current_rubric.name }}</h2>
     <div>
 
-        {% block create_bb %}
-        <div class="container">
-            <div class="nav justify-content-end">
-                <div class="nav-item">
-                    <p><a class="nav-link" href="#">Create bb</a></p>
-                </div>
-                <div class="nav-item">
-                    <p><a class="nav-link" href="#">about</a></p>
-                </div>
+        {% block pagination %}
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'add' %}" style="font-family: oswald; font-size: 30px;" >CreateNewBB</a>
+                <a class="navbar-brand" href="/admin/" style="font-family: oswald; font-size: 30px;" >Admin</a>
             </div>
-        </div>
+          </nav>
         {% endblock %}
 
         {% block view_categories %}
 
-        <div class="container">
+        <div class="shadow p-3 mb-5 bg-body roundedr">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{% url 'index' %}">Главная</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'index' %}" style="font-family: oswald; font-size: 22px;" >Главная</a>
                 </li>
                 {% for rubric in rubrics %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name|capfirst }}</a>
+                    <a class="nav-link" href="{% url 'by_rubric' rubric.pk %}" style="font-family: oswald; font-size: 22px;" >{{ rubric.name|capfirst }}</a>
                 </li>
                 {% endfor %}
-
+        </div>
+        
         {% endblock %}
 
-        </div>
+        
 
         {% block view_bbs %}
 
@@ -47,8 +44,8 @@
             <div class="container">
             
                     <div class="alert alert-light">
-                        <h2>{{ bb.title|capfirst }}</h2>
-                        <p class="text-break">{{ bb.content|capfirst}}</p>
+                        <h2 style="font-family: oswald; font-size: 30px;">{{ bb.title|capfirst }}</h2>
+                        <p class="text-break" style="font-family: oswald; font-size: 24px;">{{ bb.content|capfirst}}</p>
                         <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
                     </div>
               

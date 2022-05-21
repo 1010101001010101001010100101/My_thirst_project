@@ -1,0 +1,40 @@
+{% extends 'bboard/base.html' %}
+
+{% block title %}Добавить статью{% endblock %}
+
+{% block pagination %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}" style="font-family: oswald; font-size: 30px;">BBNews</a>
+        <a class="navbar-brand" href="/admin/" style="font-family: oswald; font-size: 30px;">Admin</a>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block specific-content %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="container" style="padding-top: 20px;">
+            <label class="container-fluid" style="font-family: oswald; font-size: 26px;">Title</label>
+            {{ form.title }}
+        </div>
+        
+        <div class="container" style="padding-top: 20px;">
+            <label class="container-fluid" style="font-family: oswald; font-size: 26px;">Content</label>
+            {{ form.content }}
+        </div>
+    
+        <div class="container" style="padding-top: 20px;">
+            <label class="container-fluid" style="font-family: oswald; font-size: 26px;">rubric</label>
+            {{ form.rubric }}
+        </div>
+    
+        <div class="container" style="padding-top: 100px; padding-bottom: 80px;">
+            <div class="nav justify-content-center">
+                <input type="submit" value="Добавить" class="btn btn-dark">
+            </div>
+        </div>
+        
+        
+    </form>
+{% endblock %}
